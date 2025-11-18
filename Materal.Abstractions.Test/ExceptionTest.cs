@@ -46,8 +46,8 @@ namespace Materal.Abstractions.Test
             string result = outerException.GetErrorMessage();
 
             // Assert
-            Assert.IsTrue(result.Contains("System.Exception: 外部异常"));
-            Assert.IsTrue(result.Contains("--->System.Exception: 内部异常"));
+            Assert.Contains("System.Exception: 外部异常", result);
+            Assert.Contains("--->System.Exception: 内部异常", result);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Materal.Abstractions.Test
             string result = materalException.GetErrorMessage();
 
             // Assert
-            Assert.IsTrue(result.Contains("Materal.Abstractions.MateralException: Materal异常"));
+            Assert.Contains("Materal.Abstractions.MateralException: Materal异常", result);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Materal.Abstractions.Test
             string result = exception.GetErrorMessage((ex, prefix) => $"自定义消息: {ex.Message}");
 
             // Assert
-            Assert.IsTrue(result.Contains("自定义消息: 测试异常"));
+            Assert.Contains("自定义消息: 测试异常", result);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Materal.Abstractions.Test
             string result = deepException.GetErrorMessage();
 
             // Assert
-            Assert.IsTrue(result.Contains("警告: 已达到最大递归深度 20"));
+            Assert.Contains("警告: 已达到最大递归深度 20", result);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Materal.Abstractions.Test
             }
 
             // Assert
-            Assert.IsTrue(result.Contains("--- 异常堆栈跟踪结束 ---"));
+            Assert.Contains("--- 异常堆栈跟踪结束 ---", result);
         }
     }
 }
