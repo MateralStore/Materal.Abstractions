@@ -1,47 +1,47 @@
 # Materal.Abstractions
 
-Materal 基础抽象包，为 .NET 应用程序提供通用的抽象基类和扩展方法。
+Materal 基础抽象包，提供优雅的异常处理机制和统一的异常消息格式化能力。
 
-## 功能特性
+## 核心功能
 
-- **异常处理增强**：提供强大的异常处理扩展方法，支持格式化异常信息、递归处理内部异常、自定义消息格式等功能
-- **基础异常类**：`MateralException` 作为所有自定义异常的基类
-- **日期时间枚举**：提供常用的日期时间单位枚举
-- **多框架支持**：支持 .NET Standard 2.0/2.1 以及 .NET 8.0/9.0/10.0
+- **统一异常基类** - `MateralException` 作为框架异常的基础类型
+- **智能消息格式化** - 自动递归处理异常及内部异常，生成结构化错误信息
+- **灵活自定义** - 支持通过继承或委托自定义异常消息格式
+- **高性能** - 反射缓存优化，线程安全设计
+- **多框架支持** - 兼容 .NET Standard 2.0/2.1 和 .NET 8.0/9.0/10.0
 
 ## 快速开始
-
-### 安装
-
-```xml
-<PackageReference Include="Materal.Abstractions" Version="[VERSION]" />
-```
-
-或者使用 .NET CLI：
 
 ```bash
 dotnet add package Materal.Abstractions
 ```
 
-### 基本使用
-
 ```csharp
 using Materal.Abstractions;
 
-// 使用异常处理扩展
-try
-{
-    throw new MateralException("测试异常");
-}
+// 基础使用
+throw new MateralException("操作失败");
+
+// 格式化异常消息
+try { ... }
 catch (Exception ex)
 {
     Console.WriteLine(ex.GetErrorMessage());
 }
 
-// 使用日期时间枚举
-DateTimeUnitEnum unit = DateTimeUnitEnum.DayUnit;
+// 自定义异常
+public class BusinessException : MateralException
+{
+    public string ErrorCode { get; }
+    public override string GetDetailMessage(string prefix)
+        => $"[{ErrorCode}] {Message}";
+}
 ```
 
-## 文档
+## 📖 文档
 
-有关更详细的文档和使用示例，请查看我们的 [Wiki](https://github.com/Materal/Materal.Abstractions/wiki)。
+详细文档请查看 [Wiki](./wiki)，包含：
+- 完整 API 参考
+- 高级用法示例
+- 最佳实践指南
+- 测试说明

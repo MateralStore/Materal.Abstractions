@@ -14,6 +14,6 @@
 		<PackageReference Include="MSTest.TestFramework" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Materal.Test.Base\Materal.Test.Base\Materal.Test.Base.csproj" />
+	  <ProjectReference Include="..\Materal.Abstractions\Materal.Abstractions.csproj" />
 	</ItemGroup>
 </Project>
