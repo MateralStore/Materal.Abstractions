@@ -40,7 +40,7 @@ public class BusinessException : MateralException
 
 ## 📖 文档
 
-详细文档请查看 [Wiki](./wiki)，包含：
+详细文档请查看 [Wiki](../../wiki)，包含：
 - 完整 API 参考
 - 高级用法示例
 - 最佳实践指南
